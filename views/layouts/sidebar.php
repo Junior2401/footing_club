@@ -19,7 +19,7 @@
                                 Contacts
                             </a>
                             <div class="sb-sidenav-menu-heading text-white"><i class="fa-solid fa-gears text-white"></i> Configurations</div>
-                            <a class="nav-link" href="tables.html">
+                            <a class="nav-link" href="../categories/IndexCategorieController.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-solid fa-layer-group text-primary"></i></div>
                                 Catégories
                             </a>

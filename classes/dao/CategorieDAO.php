@@ -1,16 +1,16 @@
 <?php
-class ContactDAO {
+class CategorieDAO {
     private $connexion;
 
     public function __construct(Connexion $connexion) {
         $this->connexion = $connexion;
     }
 
-    // MÃ©thode pour insÃ©rer un nouveau contact dans la base de donnÃ©es
-    public function create(ContactModel $contact) {
+    // MÃ©thode pour insÃ©rer un nouveau categorie dans la base de donnÃ©es
+    public function create(CategorieModel $categorie) {
         try {
-            $stmt = $this->connexion->pdo->prepare("INSERT INTO contacts (nom, prenom, email, telephone) VALUES (?, ?, ?, ?)");
-            $stmt->execute([$contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone()]);
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO categories (code, nom) VALUES (?, ?)");
+            $stmt->execute([$categorie->getCode(), $categorie->getNom()]);
             return true;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs d'insertion ici
@@ -18,17 +18,17 @@ class ContactDAO {
         }
     }
 
-    // MÃ©thode pour rÃ©cupÃ©rer un contact par son ID
+    // MÃ©thode pour rÃ©cupÃ©rer un categorie par son ID
     public function getById($id) {
         try {
-            $stmt = $this->connexion->pdo->prepare("SELECT * FROM contacts WHERE id = ?");
+            $stmt = $this->connexion->pdo->prepare("SELECT * FROM categories WHERE id = ?");
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($row) {
-                return new ContactModel($row['id'],$row['nom'], $row['prenom'], $row['email'], $row['telephone']);
+                return new CategorieModel($row['id'],$row['code'], $row['nom']);
             } else {
-                return null; // Aucun contact trouvÃ© avec cet ID
+                return null; // Aucun categorie trouvÃ© avec cet ID
             }
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
@@ -36,28 +36,28 @@ class ContactDAO {
         }
     }
 
-    // MÃ©thode pour rÃ©cupÃ©rer la liste de tous les contacts
+    // MÃ©thode pour rÃ©cupÃ©rer la liste de tous les categories
     public function getAll() {
         try {
-            $stmt = $this->connexion->pdo->query("SELECT * FROM contacts");
-            $contacts = [];
+            $stmt = $this->connexion->pdo->query("SELECT * FROM categories");
+            $categories = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $contacts[] = new ContactModel($row['id'],$row['nom'], $row['prenom'], $row['email'], $row['telephone']);
+                $categories[] = new CategorieModel($row['id'],$row['code'], $row['nom']);
             }
 
-            return $contacts;
+            return $categories;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
             return [];
         }
     }
 
-    // MÃ©thode pour mettre Ã  jour un contact
-    public function update(ContactModel $contact) {
+    // MÃ©thode pour mettre Ã  jour un categorie
+    public function update(CategorieModel $categorie) {
         try {
-            $stmt = $this->connexion->pdo->prepare("UPDATE contacts SET nom = ?, prenom = ?, email = ?, telephone = ? WHERE id = ?");
-            $stmt->execute([$contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone(), $contact->getId()]);
+            $stmt = $this->connexion->pdo->prepare("UPDATE categories SET code = ?, nom = ? WHERE id = ?");
+            $stmt->execute([$categorie->getCode(), $categorie->getNom(), $categorie->getId()]);
             return true;
         } catch (PDOException $e) {
             // GÃ©rer les erreurs de mise Ã  jour ici
@@ -65,10 +65,10 @@ class ContactDAO {
         }
     }
 
-    // MÃ©thode pour supprimer un contact par son ID
+    // MÃ©thode pour supprimer un categorie par son ID
     public function deleteById($id) {
         try {
-            $stmt = $this->connexion->pdo->prepare("DELETE FROM contacts WHERE id = ?");
+            $stmt = $this->connexion->pdo->prepare("DELETE FROM categories WHERE id = ?");
             $stmt->execute([$id]);
             return true;
         } catch (PDOException $e) {
