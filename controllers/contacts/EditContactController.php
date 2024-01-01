@@ -12,8 +12,8 @@ class EditContactController {
 
         if (!$contact) {
             // Le contact n'a pas été trouvé, vous pouvez rediriger ou afficher un message d'erreur
-            echo "Le contact n'a pas été trouvé.";
-            return;
+            $_SESSION['error'] = "Le contact n'a pas été trouvé!";
+            header('Location:IndexContactController.php');
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {

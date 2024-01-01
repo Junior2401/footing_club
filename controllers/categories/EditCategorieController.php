@@ -31,6 +31,7 @@ class EditCategorieController {
             if ($this->categorieDAO->update($categorie)) {
                 // Rediriger vers la page de détails du categorie après la modification
                 //header('Location:IndexCategorieController.php?id=' . $categorieId);
+                $_SESSION['msg'] = "Bravo catégorie modifié!";
                 header('Location:IndexCategorieController.php');
                 exit();
             } else {

@@ -23,4 +23,6 @@ class Connexion{
     }
 
 }
+
+session_start();
 ?>

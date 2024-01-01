@@ -6,7 +6,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-solid fa-house  text-white"></i></div>
                                 Accueil
                             </a>
-                            <a class="nav-link" href="tables.html">
+                            <a class="nav-link" href="../licencies/IndexLicencieController.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-solid fa-person-running text-success"></i></div>
                                 Licenciés
                             </a>

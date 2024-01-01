@@ -14,22 +14,20 @@
                             </div>
                         </div>
                         <div class="message">
+                        <div class="message">
                             <?php 
-                                    if(isset($_SESSION['msg'])){
-
-                                    echo '<div class="reuissir btn-success">';
-                                                echo $_SESSION['msg'];
-                                                unset($_SESSION['msg']);
-                                    echo '</div>';
-                                            }
-                                    if(isset($_SESSION['echec'])){
-
-                                    echo '<div class="echec btn-danger">';
-                                                echo $_SESSION['echec'];
-                                                unset($_SESSION['echec']);
-                                    echo '</div>';
-                                    }
+                                    if(isset($_SESSION['msg'])):
                             ?>
+
+                                    <div class="alert alert-success alert-dismissible">
+                                        <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                                        <?php echo $_SESSION['msg'];
+                                                unset($_SESSION['msg']);
+                                        ?>
+                                    </div>
+
+                            <?php endif ?>
+                        </div>
                        </div>                        
                         <div class="card mb-4">
                             <div class="card-header">
