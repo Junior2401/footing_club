@@ -25,4 +25,5 @@ class Connexion{
 }
 
 session_start();
+$_SESSION;
 ?>

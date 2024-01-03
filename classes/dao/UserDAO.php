@@ -11,8 +11,7 @@ class UserDAO{
         try {
             $stmt = $this->connexion->pdo->prepare("SELECT COUNT(*) FROM educateurs WHERE email = ? AND password = ? AND role = 1");
             $stmt->execute([$email, md5($password)]);
-            $row = $stmt->fetchColumn();      
-            var_dump($row);      
+            $row = $stmt->fetchColumn();          
             if ($row>0) {
                 return true;
             } else {
@@ -20,7 +19,7 @@ class UserDAO{
             }
         } catch (PDOException $e) {
             $_SESSION['error'] = "Oops! Quelque chose c'est mal passée.";
-            header('Location:IndexController.php');
+            header('Location:dashboard/DashboardController.php');
         }
     }
     }

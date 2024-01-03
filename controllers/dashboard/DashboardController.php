@@ -1,4 +1,5 @@
 <?php
+
 class DashboardController {
 /*     private $contactDAO;
  */
