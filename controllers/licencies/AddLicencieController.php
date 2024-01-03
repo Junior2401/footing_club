@@ -3,6 +3,8 @@ class AddLicencieController {
     private $licencieDAO;
     private $categorieDAO;
     private $contactDAO;
+    
+    public $errors = [];
 
     public function __construct(LicencieDAO $licencieDAO, CategorieDAO $categorieDAO, ContactDAO $contactDAO) {
 
@@ -25,6 +27,7 @@ class AddLicencieController {
     }
     
     public function addLicencie() {
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Récupérer les données du formulaire
             $licence = $_POST['licence'];

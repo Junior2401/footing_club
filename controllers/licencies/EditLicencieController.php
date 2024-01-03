@@ -34,7 +34,7 @@ class EditLicencieController {
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Récupérer les données du formulaire
-            $id = $_POST['id'];
+            $id = $licencieId;
             $licence = $_POST['licence'];
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];

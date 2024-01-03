@@ -54,6 +54,20 @@ class LicencieDAO {
         }
     }
 
+
+
+
+    public function getCount() {
+        try {
+            $licencies = $this->connexion->pdo->query("SELECT COUNT(*) FROM licencies");
+            $licencies = $licencies->fetchColumn();            
+            return $licencies;
+        } catch (PDOException $e) {
+            // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
+            return [];
+        }
+    }    
+
     // MÃ©thode pour mettre Ã  jour un licencie
     public function update(LicencieModel $licencie) {
         try {

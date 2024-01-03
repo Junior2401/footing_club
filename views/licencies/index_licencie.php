@@ -39,41 +39,31 @@
 
                             <?php endif ?>
 
-                        </div>                        
+                        </div>                  
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 Liste des licencies
                             </div>
                             <div class="card-body">
-                                <?php if (count($licencies) > 0): ?>
+                            <?php if (count($licencies) > 0): ?>
                                 <?php $compteur=1; ?>
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
+                                    <table id="example1" class="table table-bordered table-striped table-sm"  style="font-size: 12px">
+                                        <thead class="text-white text-center bg-gradient-gray-dark">
+                                            <tr>
                                             <th>#</th>
                                             <th>Licence</th>
                                             <th>Nom</th>
                                             <th>Prénom</th>
                                             <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Licence</th>
-                                            <th>Nom</th>
-                                            <th>Prénom</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
+                                            </tr>
+                                        </thead>
                                         <?php foreach ($licencies as $licencie): ?>
                                             <tr>
-                                                <td><?php echo $compteur++; ?></td>
-                                                <td><?php echo $licencie->getLicence(); ?></td>
-                                                <td><?php echo $licencie->getNom(); ?></td>
-                                                <td><?php echo $licencie->getPrenom(); ?></td>
+                                            <td><?php echo $compteur++; ?></td>
+                                                <td class=" text-center" style="padding-right: 50px"><?php echo $licencie->getLicence(); ?></td>
+                                                <td style="padding-right: 150px"><?php echo $licencie->getNom(); ?></td>
+                                                <td style="padding-right: 200px"><?php echo $licencie->getPrenom(); ?></td>
                                                 <td>
                                                     <a  class="btn btn-success btn-sm" href="ShowLicencieController.php?id=<?php echo $licencie->getId(); ?>"><i class="fa-solid fa-circle-info text-white"></i></a>
                                                     <a  class="btn btn-warning btn-sm" href="EditLicencieController.php?id=<?php echo $licencie->getId(); ?>"><i class="fa-solid fa-pen-to-square text-white"></i></a>
@@ -81,12 +71,21 @@
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                                <?php else: ?>
-                                    <p>Aucun licencie trouvé.</p>
-                                <?php endif; ?>
-                            </div>
+                                        <tfoot  class="text-white text-center bg-gradient-gray-dark">
+                                        <tr>
+                                        <th>#</th>
+                                            <th>Licence</th>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Action</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <?php else: ?>
+                                        <p>Aucun educateur trouvé.</p>
+                                    <?php endif; ?>                                    
+                                </div>
+                            </div>                            
                         </div>
                     </div>
                 </main>                 

@@ -53,6 +53,21 @@ class CategorieDAO {
         }
     }
 
+
+    public function getCount() {
+        try {
+            $categories = $this->connexion->pdo->query("SELECT COUNT(*) FROM categories");
+            $categories = $categories->fetchColumn();
+            return $categories;
+        } catch (PDOException $e) {
+            // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
+            return [];
+        }
+    }
+
+
+
+
     // MÃ©thode pour mettre Ã  jour un categorie
     public function update(CategorieModel $categorie) {
         try {

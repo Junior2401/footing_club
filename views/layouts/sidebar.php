@@ -10,7 +10,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-solid fa-person-running text-success"></i></div>
                                 Licenciés
                             </a>
-                            <a class="nav-link" href="tables.html">
+                            <a class="nav-link" href="../educateurs/IndexEducateurController.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-solid fa-person-circle-check text-success"></i></div>
                                 Educateurs
                             </a>

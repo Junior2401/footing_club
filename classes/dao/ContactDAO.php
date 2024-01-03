@@ -53,6 +53,19 @@ class ContactDAO {
         }
     }
 
+
+    public function getCount() {
+        try {
+            $contacts = $this->connexion->pdo->query("SELECT COUNT(*) FROM contacts");
+            $contacts = $contacts->fetchColumn(); 
+            return $contacts;
+        } catch (PDOException $e) {
+            // GÃ©rer les erreurs de rÃ©cupÃ©ration ici
+            return [];
+        }
+    }
+
+
     // MÃ©thode pour mettre Ã  jour un contact
     public function update(ContactModel $contact) {
         try {

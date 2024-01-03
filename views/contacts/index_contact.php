@@ -14,7 +14,6 @@
                             </div>
                         </div>
                         <div class="message">
-                        <div class="message">
                             <?php 
                                     if(isset($_SESSION['msg'])):
                             ?>
@@ -27,58 +26,70 @@
                                     </div>
 
                             <?php endif ?>
-                        </div>
-                       </div>                        
+                            <?php 
+                                    if(isset($_SESSION['error'])):
+                            ?>
+
+                                    <div class="alert alert-danger alert-dismissible">
+                                    <h5><i class="fa-solid fa-circle-exclamation"></i> Alert!</h5>
+                                        <?php echo $_SESSION['error'];
+                                                unset($_SESSION['error']);
+                                        ?>
+                                    </div>
+
+                            <?php endif ?>
+
+                        </div>                            
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 Liste des contacts
                             </div>
                             <div class="card-body">
-                                <?php if (count($contacts) > 0): ?>
+                            <?php if (count($contacts) > 0): ?>
                                 <?php $compteur=1; ?>
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Nom</th>
-                                            <th>Prénom</th>
-                                            <th>Email</th>
-                                            <th>Téléphone</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Nom</th>
-                                            <th>Prénom</th>
-                                            <th>Email</th>
-                                            <th>Téléphone</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <?php foreach ($contacts as $contact): ?>
+                                    <table id="example1" class="table table-bordered table-striped table-sm"  style="font-size: 12px">
+                                        <thead class="text-white text-center bg-gradient-gray-dark">
                                             <tr>
-                                                <td><?php echo $compteur++; ?></td>
-                                                <td><?php echo $contact->getNom(); ?></td>
-                                                <td><?php echo $contact->getPrenom(); ?></td>
-                                                <td><?php echo $contact->getEmail(); ?></td>
-                                                <td><?php echo $contact->getTelephone(); ?></td>
-                                                <td>
-                                                    <a  class="btn btn-success btn-sm" href="ShowContactController.php?id=<?php echo $contact->getId(); ?>"><i class="fa-solid fa-circle-info text-white"></i></a>
-                                                    <a  class="btn btn-warning btn-sm" href="EditContactController.php?id=<?php echo $contact->getId(); ?>"><i class="fa-solid fa-pen-to-square text-white"></i></a>
-                                                    <a  class="btn btn-danger btn-sm" href="DeleteContactController.php?id=<?php echo $contact->getId(); ?>"><i class="fa-solid fa-trash-can text-white"></i></a>
-                                                </td>
+                                            <th>#</th>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Email</th>
+                                            <th>Téléphone</th>
+                                            <th>Action</th>
                                             </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                                <?php else: ?>
-                                    <p>Aucun contact trouvé.</p>
-                                <?php endif; ?>
-                            </div>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($contacts as $contact): ?>
+                                                <tr>
+                                                    <td><?php echo $compteur++; ?></td>
+                                                    <td><?php echo $contact->getNom(); ?></td>
+                                                    <td><?php echo $contact->getPrenom(); ?></td>
+                                                    <td><?php echo $contact->getEmail(); ?></td>
+                                                    <td><?php echo $contact->getTelephone(); ?></td>
+                                                    <td>
+                                                        <a  class="btn btn-success btn-sm" href="ShowContactController.php?id=<?php echo $contact->getId(); ?>"><i class="fa-solid fa-circle-info text-white"></i></a>
+                                                        <a  class="btn btn-warning btn-sm" href="EditContactController.php?id=<?php echo $contact->getId(); ?>"><i class="fa-solid fa-pen-to-square text-white"></i></a>
+                                                        <a  class="btn btn-danger btn-sm" href="DeleteContactController.php?id=<?php echo $contact->getId(); ?>"><i class="fa-solid fa-trash-can text-white"></i></a>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                        <tfoot  class="text-white text-center bg-gradient-gray-dark">
+                                        <tr>
+                                        <th>#</th>
+                                            <th>Nom</th>
+                                            <th>Prénom</th>
+                                            <th>Email</th>
+                                            <th>Téléphone</th>
+                                            <th>Action</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <?php else: ?>
+                                        <p>Aucun educateur trouvé.</p>
+                                    <?php endif; ?>                                    
+                                </div>
                         </div>
                     </div>
                 </main> 

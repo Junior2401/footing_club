@@ -14,7 +14,6 @@
                             </div>
                         </div>
                         <div class="message">
-                        <div class="message">
                             <?php 
                                     if(isset($_SESSION['msg'])):
                             ?>
@@ -27,8 +26,20 @@
                                     </div>
 
                             <?php endif ?>
-                        </div> 
-                       </div>                        
+                            <?php 
+                                    if(isset($_SESSION['error'])):
+                            ?>
+
+                                    <div class="alert alert-danger alert-dismissible">
+                                    <h5><i class="fa-solid fa-circle-exclamation"></i> Alert!</h5>
+                                        <?php echo $_SESSION['error'];
+                                                unset($_SESSION['error']);
+                                        ?>
+                                    </div>
+
+                            <?php endif ?>
+
+                        </div>                     
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -36,30 +47,21 @@
                             </div>
                             <div class="card-body">
                                 <?php if (count($categories) > 0): ?>
-                                <?php $compteur=1; ?>
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
+                                    <?php $compteur=1; ?>
+                                    <table id="example1" class="table table-bordered table-striped table-sm"  style="font-size: 12px">
+                                        <thead class="text-white text-center bg-gradient-gray-dark">
+                                            <tr>
                                             <th>#</th>
                                             <th>Code</th>
                                             <th>Nom</th>
                                             <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Code</th>
-                                            <th>Nom</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
+                                            </tr>
+                                        </thead>
                                         <?php foreach ($categories as $categorie): ?>
                                             <tr>
                                                 <td><?php echo $compteur++; ?></td>
-                                                <td><?php echo $categorie->getCode(); ?></td>
-                                                <td><?php echo $categorie->getNom(); ?></td>
+                                                <td style="padding-right: 50px"><?php echo $categorie->getCode(); ?></td>
+                                                <td style="padding-right: 200px"><?php echo $categorie->getNom(); ?></td>
                                                 <td>
                                                     <a  class="btn btn-success btn-sm" href="ShowCategorieController.php?id=<?php echo $categorie->getId(); ?>"><i class="fa-solid fa-circle-info text-white"></i></a>
                                                     <a  class="btn btn-warning btn-sm" href="EditCategorieController.php?id=<?php echo $categorie->getId(); ?>"><i class="fa-solid fa-pen-to-square text-white"></i></a>
@@ -67,13 +69,20 @@
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                                <?php else: ?>
-                                    <p>Aucun categorie trouvé.</p>
-                                <?php endif; ?>
+                                        <tfoot  class="text-white text-center bg-gradient-gray-dark">
+                                        <tr>
+                                        <th>#</th>
+                                            <th>Code</th>
+                                            <th>Nom</th>
+                                            <th>Action</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                    <?php else: ?>
+                                        <p>Aucun educateur trouvé.</p>
+                                    <?php endif; ?>                                    
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </main> 
                 <?php 
