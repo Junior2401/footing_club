@@ -18,6 +18,7 @@
             $user = $this->userDAO->login($email, $password);
             if ($user) {
                 $_SESSION['msg'] = "Authentification reussi.";
+                $_SESSION['email']= $email;
                 header('Location:dashboard/DashboardController.php'); 
             } else {
                 $_SESSION['error'] = "Nom d'utilisateur ou mot de passe erroné.";
