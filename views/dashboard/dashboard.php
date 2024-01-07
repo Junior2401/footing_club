@@ -1,7 +1,7 @@
             <?php   
-            /*if(!isset($_SESSION['email'])){
-                header('Location:ConnexionController.php');
-            }*/
+            if(!isset($_SESSION['email'])){
+                header("Location:../HomeController.php");
+            }
                 include DOC_ROOT_PATH . "views/layouts/header.php";
                 //var_dump($_SESSION);
                 //include_once('layouts/header.php'); 

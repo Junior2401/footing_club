@@ -1,5 +1,7 @@
-
 <?php 
+                if(!isset($_SESSION['email'])){
+                    header("Location:../HomeController.php");
+                }    
                 include DOC_ROOT_PATH . "views/layouts/header.php";
             ?>    
                 <main>

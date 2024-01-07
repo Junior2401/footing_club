@@ -22,13 +22,13 @@
                 header('Location:dashboard/DashboardController.php'); 
             } else {
                 $_SESSION['error'] = "Nom d'utilisateur ou mot de passe erroné.";
-                require ROOT_PATH."index.php";
+                require ROOT_PATH."/views/index.php";
             }
         }
 
         public function logout() {
             session_destroy();
-            header('Location:ConnexionController.php');
+            header("Location:HomeController.php");
         }
     }
 
