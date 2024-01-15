@@ -86,5 +86,4 @@ $categorieDAO=new CategorieDAO(new Connexion());
 $contactDAO=new ContactDAO(new Connexion());
 $controller=new EditLicencieController($licencieDAO, $contactDAO, $categorieDAO); 
 $controller->editLicencie($_GET['id']);
-?>
 

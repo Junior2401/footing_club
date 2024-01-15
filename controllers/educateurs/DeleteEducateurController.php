@@ -13,7 +13,7 @@ class DeleteEducateurController {
 
         // Récupérer le éducateur à supprimer en utilisant son ID
         $educateur = $this->educateurDAO->getById($educateurId);
-
+        $licencie_id = $educateur->getLicencieId();
         $licencie = $this->licencieDAO->getById($educateur->getLicencieId());
 
         if (!$educateur) {
@@ -26,7 +26,7 @@ class DeleteEducateurController {
 
             // Supprimer l'éducateur' en appelant la méthode du modèle (EducateurDAO)
             if ($this->educateurDAO->deleteById($educateurId)) {
-                if($this->licencieDAO->deleteById($educateur->getLicencieId())){
+                if($this->licencieDAO->deleteById($licencie_id)){
                     // Rediriger vers la page d'accueil après la suppression
                     $_SESSION['msg'] = "Bravo, l'éducateur a été supprimé!";
                     header('Location:IndexEducateurController.php');                    

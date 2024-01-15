@@ -10,7 +10,7 @@ class EducateurDAO {
     public function create(EducateurModel $educateur) {
         try {
             var_dump([$educateur->getEmail(), $educateur->getPassword(), $educateur->getRole(), $educateur->getLicencieId()]);
-            $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs (email, password, role, licencie_id) VALUES (?, ?, ?, ?)");
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs (email, password, roles, licencie_id) VALUES (?, ?, ?, ?)");
             $stmt->execute([$educateur->getEmail(), $educateur->getPassword(), $educateur->getRole(), $educateur->getLicencieId()]);
             return true;
         } catch (PDOException $e) {
@@ -27,7 +27,7 @@ class EducateurDAO {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             
             if ($row) {
-                return new EducateurModel($row['id'], $row['email'],$row['password'], $row['role'], $row['licencie_id'], null, null, null);
+                return new EducateurModel($row['id'], $row['email'],$row['password'], $row['roles'], $row['licencie_id'], null, null, null);
             } else {
                 $_SESSION['error'] = "Oops! Quelque chose c'est mal passée.";
                 header('Location:IndexEducateurController.php');
@@ -76,7 +76,7 @@ class EducateurDAO {
     // MÃ©thode pour rÃ©cupÃ©rer la liste de tous les educateurs
     public function getAll() {
         try {
-            $stmt = $this->connexion->pdo->query("SELECT * FROM educateurs, licencies WHERE educateurs.licencie_id = licencies.id ORDER BY educateurs.id DESC");
+            $stmt = $this->connexion->pdo->query("SELECT educateurs.id AS id, educateurs.email AS email, educateurs.password AS password, educateurs.roles AS role, educateurs.licencie_id AS licencie_id, licencies.licence AS licence, licencies.nom AS nom, licencies.prenom AS prenom   FROM educateurs, licencies WHERE educateurs.licencie_id = licencies.id ORDER BY educateurs.id DESC");
             $educateurs = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -110,7 +110,7 @@ class EducateurDAO {
     // MÃ©thode pour mettre Ã  jour un educateur
     public function update(EducateurModel $educateur) {
         try {
-            $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET email = ?,  password = ?, role = ?, licencie_id = ? WHERE id = ?");
+            $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET email = ?,  password = ?, roles = ?, licencie_id = ? WHERE id = ?");
             $stmt->execute([$educateur->getEmail(), $educateur->getPassword(), $educateur->getRole(), $educateur->getLicencieId(), $educateur->getId()]);
             return true;
         } catch (PDOException $e) {
