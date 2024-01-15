@@ -26,7 +26,7 @@
                                                 <div class="col-md-2 p-3">
                                                     <div class="form-floating mb-3 mb-md-0">
                                                         <div class="d-grid">
-                                                            <a href="IndexLicenceController.php" class="btn btn-sm btn-secondary btn-block">
+                                                            <a href="IndexLicencieController.php" class="btn btn-sm btn-secondary btn-block">
                                                                 <i class="fa-solid fa-circle-left"></i>
                                                                 Retour
                                                             </a>

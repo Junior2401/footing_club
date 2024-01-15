@@ -9,7 +9,7 @@ class EducateurDAO {
     // MÃ©thode pour insÃ©rer un nouveau educateur dans la base de donnÃ©es
     public function create(EducateurModel $educateur) {
         try {
-            var_dump([$educateur->getEmail(), $educateur->getPassword(), $educateur->getRole(), $educateur->getLicencieId()]);
+            //ar_dump([$educateur->getEmail(), $educateur->getPassword(), $educateur->getRole(), $educateur->getLicencieId()]);
             $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs (email, password, roles, licencie_id) VALUES (?, ?, ?, ?)");
             $stmt->execute([$educateur->getEmail(), $educateur->getPassword(), $educateur->getRole(), $educateur->getLicencieId()]);
             return true;
