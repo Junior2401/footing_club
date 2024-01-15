@@ -72,9 +72,9 @@ class AddEducateurController {
                     $licencieId = $this->educateurDAO->getLastLicencie();
                     $nouveauEducateur="";
                     if($role=="admin"){
-                        $nouveauEducateur = new EducateurModel(0, $email, md5($password_1), 1, $licencieId, null, null, null);
+                        $nouveauEducateur = new EducateurModel(0, $email, password_hash($password_1, PASSWORD_BCRYPT), 1, $licencieId, null, null, null);
                     }elseif($role=="user"){
-                        $nouveauEducateur = new EducateurModel(0, $email, md5($password_1), 0, $licencieId, null, null, null);
+                        $nouveauEducateur = new EducateurModel(0, $email, password_hash($password_1, PASSWORD_BCRYPT), 0, $licencieId, null, null, null);
                     }
                     $nouveauEducateur;
                     if($this->educateurDAO->create($nouveauEducateur)){
